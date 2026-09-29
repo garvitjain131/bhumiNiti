@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* ============================================================================================
+   Theme: a minimal public-sector look. Cool light-grey page, white panels, navy as the one accent,
+   a thin saffron / white / green rule on the sidebar, serif headings and monospace figures.
+   Colours are tokens (CSS variables); <html data-theme="dark"> switches every token at once.
+   ============================================================================================ */
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/* the desktop sidebar can collapse to an icon rail: <html data-sidebar="collapsed"> */
+@custom-variant collapsed (&:where([data-sidebar=collapsed], [data-sidebar=collapsed] *));
+
+:root {
+  --bg: #f3f5f8;
+  --panel: #ffffff;
+  --field: #ffffff;
+  --subtle: #edf1f6;
+  --ink: #17212f;
+  --muted: #5a6677;
+  --line: #dce2ea;
+  --accent: #1a4d8f;
+  --accent-solid: #1a4d8f;
+  --accent-soft: #e5eef9;
+  --warn: #9a5a0b;
+  --danger: #b3261e;
+  --ok: #1f7a45;
+
+  --sidebar: #0f2344;
+  --sidebar-hover: #17305a;
+  --sidebar-active: #1e3a6b;
+  --sidebar-ink: #e8eef8;
+  --sidebar-muted: #8ea1c0;
+  --sidebar-line: #213a63;
+  --topbar: rgb(255 255 255 / 0.92);
+
+  /* the national tricolour, used only as a thin rule */
+  --flag-saffron: #ff9933;
+  --flag-white: #ffffff;
+  --flag-green: #138808;
+
+  /* page-header backdrop: a faint survey grid */
+  --grid-dot: rgb(26 77 143 / 0.09);
+
+  /* section colours (used for small markers in page headers) */
+  --sec-overview: #1a4d8f;
+  --sec-discover: #5b4b9a;
+  --sec-explore: #1f7a45;
+  --sec-decide: #b8740f;
+  --sec-fund: #1b7f86;
+  --sec-govern: #5a6677;
+
+  --sidebar-w: 256px;
+  --topbar-h: 56px;
+  color-scheme: light;
+}
+
+[data-sidebar="collapsed"] {
+  --sidebar-w: 68px;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1522;
+  --panel: #151e2d;
+  --field: #111a28;
+  --subtle: #1c2738;
+  --ink: #e6ebf2;
+  --muted: #98a4b6;
+  --line: #273347;
+  --accent: #8db4ea;
+  --accent-solid: #2d5fa6;
+  --accent-soft: #1a2c47;
+  --warn: #e0a458;
+  --danger: #ef7a6d;
+  --ok: #72c08f;
+
+  --sidebar: #0a1426;
+  --sidebar-hover: #13223b;
+  --sidebar-active: #1a2d4d;
+  --sidebar-line: #1a2a44;
+  --topbar: rgb(21 30 45 / 0.92);
+  --grid-dot: rgb(141 180 234 / 0.07);
+
+  --sec-overview: #8db4ea;
+  --sec-discover: #a797e0;
+  --sec-explore: #72c08f;
+  --sec-decide: #e0a458;
+  --sec-fund: #6cc6cc;
+  --sec-govern: #98a4b6;
+  color-scheme: dark;
+
+  /* tinted notices and badges (bg-amber-50, text-emerald-800, ...) become dark tints with light text */
+  --color-stone-50: color-mix(in srgb, #7d8796 14%, #141c2a);
+  --color-stone-100: color-mix(in srgb, #7d8796 22%, #141c2a);
+  --color-stone-200: color-mix(in srgb, #7d8796 35%, #141c2a);
+  --color-stone-300: color-mix(in srgb, #7d8796 50%, #141c2a);
+  --color-stone-700: color-mix(in srgb, #7d8796 62%, #e8edf4);
+  --color-stone-800: color-mix(in srgb, #7d8796 45%, #e8edf4);
+  --color-stone-900: color-mix(in srgb, #7d8796 32%, #e8edf4);
+  --color-amber-50: color-mix(in srgb, #d69a2d 14%, #141c2a);
+  --color-amber-100: color-mix(in srgb, #d69a2d 22%, #141c2a);
+  --color-amber-200: color-mix(in srgb, #d69a2d 35%, #141c2a);
+  --color-amber-300: color-mix(in srgb, #d69a2d 50%, #141c2a);
+  --color-amber-700: color-mix(in srgb, #d69a2d 62%, #e8edf4);
+  --color-amber-800: color-mix(in srgb, #d69a2d 45%, #e8edf4);
+  --color-amber-900: color-mix(in srgb, #d69a2d 32%, #e8edf4);
+  --color-rose-50: color-mix(in srgb, #d1566e 14%, #141c2a);
+  --color-rose-100: color-mix(in srgb, #d1566e 22%, #141c2a);
+  --color-rose-200: color-mix(in srgb, #d1566e 35%, #141c2a);
+  --color-rose-300: color-mix(in srgb, #d1566e 50%, #141c2a);
+  --color-rose-700: color-mix(in srgb, #d1566e 62%, #e8edf4);
+  --color-rose-800: color-mix(in srgb, #d1566e 45%, #e8edf4);
+  --color-rose-900: color-mix(in srgb, #d1566e 32%, #e8edf4);
+  --color-emerald-50: color-mix(in srgb, #3f9a6a 14%, #141c2a);
+  --color-emerald-100: color-mix(in srgb, #3f9a6a 22%, #141c2a);
+  --color-emerald-200: color-mix(in srgb, #3f9a6a 35%, #141c2a);
+  --color-emerald-300: color-mix(in srgb, #3f9a6a 50%, #141c2a);
+  --color-emerald-700: color-mix(in srgb, #3f9a6a 62%, #e8edf4);
+  --color-emerald-800: color-mix(in srgb, #3f9a6a 45%, #e8edf4);
+  --color-emerald-900: color-mix(in srgb, #3f9a6a 32%, #e8edf4);
+  --color-sky-50: color-mix(in srgb, #3c8fc0 14%, #141c2a);
+  --color-sky-100: color-mix(in srgb, #3c8fc0 22%, #141c2a);
+  --color-sky-200: color-mix(in srgb, #3c8fc0 35%, #141c2a);
+  --color-sky-300: color-mix(in srgb, #3c8fc0 50%, #141c2a);
+  --color-sky-700: color-mix(in srgb, #3c8fc0 62%, #e8edf4);
+  --color-sky-800: color-mix(in srgb, #3c8fc0 45%, #e8edf4);
+  --color-sky-900: color-mix(in srgb, #3c8fc0 32%, #e8edf4);
+  --color-violet-50: color-mix(in srgb, #8c6cc9 14%, #141c2a);
+  --color-violet-100: color-mix(in srgb, #8c6cc9 22%, #141c2a);
+  --color-violet-200: color-mix(in srgb, #8c6cc9 35%, #141c2a);
+  --color-violet-300: color-mix(in srgb, #8c6cc9 50%, #141c2a);
+  --color-violet-700: color-mix(in srgb, #8c6cc9 62%, #e8edf4);
+  --color-violet-800: color-mix(in srgb, #8c6cc9 45%, #e8edf4);
+  --color-violet-900: color-mix(in srgb, #8c6cc9 32%, #e8edf4);
+  --color-orange-50: color-mix(in srgb, #d9793a 14%, #141c2a);
+  --color-orange-100: color-mix(in srgb, #d9793a 22%, #141c2a);
+  --color-orange-200: color-mix(in srgb, #d9793a 35%, #141c2a);
+  --color-orange-300: color-mix(in srgb, #d9793a 50%, #141c2a);
+  --color-orange-700: color-mix(in srgb, #d9793a 62%, #e8edf4);
+  --color-orange-800: color-mix(in srgb, #d9793a 45%, #e8edf4);
+  --color-orange-900: color-mix(in srgb, #d9793a 32%, #e8edf4);
+  --color-teal-50: color-mix(in srgb, #2f8f8f 14%, #141c2a);
+  --color-teal-100: color-mix(in srgb, #2f8f8f 22%, #141c2a);
+  --color-teal-200: color-mix(in srgb, #2f8f8f 35%, #141c2a);
+  --color-teal-300: color-mix(in srgb, #2f8f8f 50%, #141c2a);
+  --color-teal-700: color-mix(in srgb, #2f8f8f 62%, #e8edf4);
+  --color-teal-800: color-mix(in srgb, #2f8f8f 45%, #e8edf4);
+  --color-teal-900: color-mix(in srgb, #2f8f8f 32%, #e8edf4);
+  --color-red-50: color-mix(in srgb, #d0473d 14%, #141c2a);
+  --color-red-100: color-mix(in srgb, #d0473d 22%, #141c2a);
+  --color-red-200: color-mix(in srgb, #d0473d 35%, #141c2a);
+  --color-red-300: color-mix(in srgb, #d0473d 50%, #141c2a);
+  --color-red-700: color-mix(in srgb, #d0473d 62%, #e8edf4);
+  --color-red-800: color-mix(in srgb, #d0473d 45%, #e8edf4);
+  --color-red-900: color-mix(in srgb, #d0473d 32%, #e8edf4);
+  --color-slate-50: color-mix(in srgb, #7a8794 14%, #141c2a);
+  --color-slate-100: color-mix(in srgb, #7a8794 22%, #141c2a);
+  --color-slate-200: color-mix(in srgb, #7a8794 35%, #141c2a);
+  --color-slate-300: color-mix(in srgb, #7a8794 50%, #141c2a);
+  --color-slate-700: color-mix(in srgb, #7a8794 62%, #e8edf4);
+  --color-slate-800: color-mix(in srgb, #7a8794 45%, #e8edf4);
+  --color-slate-900: color-mix(in srgb, #7a8794 32%, #e8edf4);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-field: var(--field);
+  --color-subtle: var(--subtle);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-solid: var(--accent-solid);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-ok: var(--ok);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-ink: var(--sidebar-ink);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-line: var(--sidebar-line);
+  --font-sans: "Segoe UI", "Noto Sans", "Nirmala UI", system-ui, sans-serif;
+  --font-serif: Georgia, "Noto Serif", "Nirmala UI", serif;
+  --font-mono: "Cascadia Mono", "JetBrains Mono", Consolas, ui-monospace, monospace;
+}
+
+/* base element styles live in the base layer so utility classes (text-ink, ...) can override them */
+@layer base {
+  html,
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+  }
+}
+
+@layer components {
+  /* small uppercase label above titles and sections */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* page-header band: white with a faint survey-grid of dots, like a map sheet */
+  .page-band {
+    background-color: var(--panel);
+    background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1.3px);
+    background-size: 18px 18px;
+  }
+
+  /* thin saffron / white / green rule */
+  .tricolour {
+    background: linear-gradient(90deg, var(--flag-saffron) 0 33.33%, var(--flag-white) 33.33% 66.66%, var(--flag-green) 66.66% 100%);
+  }
+
+  /* thin scrollbars in the dark sidebar */
+  .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sidebar-line) transparent;
+  }
+}
+
+.maplibregl-popup-content {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  border-radius: 4px;
+  color: #17212f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+}

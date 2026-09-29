@@ -1,0 +1,6 @@
+# data.gov.in resource IDs to pull (one per line; text after # is ignored).
+# Find them at https://data.gov.in -> search -> open a dataset -> the "API" tab shows the resource ID.
+# Good searches (national, state-wise tables): DILRMP, SVAMITVA, land records, land use statistics,
+# wasteland, operational holdings, land acquisition, watershed PMKSY, e-registration, ULPIN,
+# and "Rajya Sabha" / "Lok Sabha" + land (parliament answers are published as state-wise datasets).
+# Then:  set DATAGOV_API_KEY (see README) and run  python pipelines\fetch.py --out data --only datagov

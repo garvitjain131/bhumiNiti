@@ -1,0 +1,13 @@
+data/
+*.part
+districts_upload.*
+.venv/
+db/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.log
+.pytest_cache/
+.DS_Store
+Thumbs.db

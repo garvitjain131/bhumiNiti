@@ -1,0 +1,6 @@
+# fetch.py is stdlib-only; these are optional helpers
+py7zr          # auto-extract LGD code tables (.csv.7z)
+pandas         # convert SHRUG Stata files to CSV
+pyarrow        # read the GeoParquet boundary/hazard files
+geopandas      # gee_district_indicators.py prep
+earthengine-api
