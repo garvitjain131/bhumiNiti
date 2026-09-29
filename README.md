@@ -1,9 +1,9 @@
-# Land Policy Intelligence Platform (SIH26019)
+# bhumiNiti: Land Policy Intelligence Platform
 
 A national platform for land-governance research and policy innovation for the Department of Land Resources:
 find evidence, see where problems are, test a reform before rollout, and commission research where evidence is thin.
 
-## What it does (the 12 deliverables of SIH26019)
+## What it does
 
 | # | Deliverable | Where |
 |---|---|---|
